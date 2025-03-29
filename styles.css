@@ -1,0 +1,72 @@
+/* styles.css */
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+}
+
+#game {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    border: 2px solid #fff;
+}
+
+.paddle {
+    position: absolute;
+    width: 10px;
+    height: 100px;
+    background-color: #fff;
+}
+
+#paddle1 {
+    left: 5px;
+}
+
+#paddle2 {
+    right: 5px;
+}
+
+#ball {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 50%; /* Centralizar inicialmente */
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Linha central */
+#center-line {
+    position: absolute;
+    width: 2px; /* Espessura da linha */
+    height: 100%;
+    background-color: #fff;
+    left: 50%;
+    transform: translateX(-50%); /* Centralizar perfeitamente */
+    opacity: 0.5; /* Para dar um leve efeito de transparência */
+}
+
+/* Estilo para os displays de pontuação */
+.score {
+    position: absolute;
+    top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+#score1 {
+    left: 20px; /* Posicionar próximo ao lado esquerdo */
+}
+
+#score2 {
+    right: 20px; /* Posicionar próximo ao lado direito */
+}
