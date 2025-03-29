@@ -16,7 +16,7 @@ function announceScore() {
     window.speechSynthesis.speak(utterance);
 }
 
-let ballSpeedX = 4;
+let ballSpeedX = 3;
 let ballSpeedY = 2;
 
 let paddle1Y = game.clientHeight / 2 - paddle1.offsetHeight / 2; // Centralizar paddle1
@@ -52,13 +52,14 @@ function resetBall() {
 //     resetBall();
 // }
 
-const beepSound = document.querySelector('#beep-sound');
 
 function playBeep() {
-    beepSound.currentTime = 0; // Reinicia o áudio para tocar do começo
-    beepSound.play();
+    const beepSound = document.querySelector('#beep-sound');
+    if (beepSound) {
+        beepSound.currentTime = 0; // Reinicia o áudio
+        beepSound.play(); // Toca o som
+    }
 }
-
 function gameLoop() {
     // Movimentar a bola
     ballX += ballSpeedX;
@@ -66,8 +67,8 @@ function gameLoop() {
 
     // Checar colisões com bordas horizontais
     if (ballY <= 0 || ballY >= game.clientHeight - ball.offsetHeight) {
-        ballSpeedY *= -1;
-     //   playBeep();
+        playBeep();
+        ballSpeedY *= -1; 
     }
 
     // Checar colisões com paddle1
@@ -76,8 +77,9 @@ function gameLoop() {
         ballY + ball.offsetHeight >= paddle1Y &&
         ballY <= paddle1Y + paddle1.offsetHeight
     ) {
+        playBeep();
         ballSpeedX *= -1;
-     //   playBeep();
+        
     }
 
     // Checar colisões com paddle2
@@ -86,8 +88,8 @@ function gameLoop() {
         ballY + ball.offsetHeight >= paddle2Y &&
         ballY <= paddle2Y + paddle2.offsetHeight
     ) {
-        ballSpeedX *= -1;
-      //  playBeep();
+        playBeep();
+        ballSpeedX *= -1;   
     }
 
     // Checar pontuação
