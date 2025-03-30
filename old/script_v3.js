@@ -16,7 +16,7 @@ function announceScore() {
   window.speechSynthesis.speak(utterance);
 }
 
-let ballSpeedX = 4;
+let ballSpeedX = 3;
 let ballSpeedY = 2;
 
 let paddle1Y = game.clientHeight / 2 - paddle1.offsetHeight / 2; // Centralizar paddle1
@@ -25,17 +25,6 @@ let ballX = game.clientWidth / 2 - ball.offsetWidth / 2; // Centralizar bola
 let ballY = game.clientHeight / 2 - ball.offsetHeight / 2;
 
 const paddleSpeed = 6;
-
-function adjustBallSpeed() {
-    const speedIncreaseFactor = 1.5; // Fator de aumento de velocidade.
-
-    // Incrementar a velocidade com base na direção atual
-    ballSpeedX += ballSpeedX > 0 ? speedIncreaseFactor : -speedIncreaseFactor;
-
-    // Limite de velocidade máxima para evitar valores exagerados
-    const maxSpeed = 18;
-    ballSpeedX = Math.min(Math.max(ballSpeedX, -maxSpeed), maxSpeed);
-}
 
 // Estado das teclas
 const keys = {
@@ -84,20 +73,23 @@ function gameLoop() {
 
     // Checar colisões com paddle1
     if (
-        ballX <= paddle1.offsetWidth +10 && ballY + ball.offsetHeight >= paddle1Y && ballY <= paddle1Y + paddle1.offsetHeight
+        ballX <= paddle1.offsetWidth +10 &&
+        ballY + ball.offsetHeight >= paddle1Y &&
+        ballY <= paddle1Y + paddle1.offsetHeight
     ) {
         playBeep();
         ballSpeedX *= -1;
-        adjustBallSpeed();  
+        
     }
 
     // Checar colisões com paddle2
     if (
-        ballX + ball.offsetWidth >= game.clientWidth - paddle2.offsetWidth +10 && ballY + ball.offsetHeight >= paddle2Y && ballY <= paddle2Y + paddle2.offsetHeight
+        ballX + ball.offsetWidth >= game.clientWidth - paddle2.offsetWidth +10 &&
+        ballY + ball.offsetHeight >= paddle2Y &&
+        ballY <= paddle2Y + paddle2.offsetHeight
     ) {
         playBeep();
-        ballSpeedX *= -1; 
-        adjustBallSpeed();  
+        ballSpeedX *= -1;   
     }
 
     // Checar pontuação
