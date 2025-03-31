@@ -6,22 +6,21 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #000; /* Fundo preto sólido */
+    background-color: #000;
 }
 
 #game {
     position: relative;
     width: 800px;
     height: 500px;
-    border: 2px solid #7CFC00; /* Bordas clássicas brancas */
-    background-color: #111; /* Fundo do jogo para contraste leve */
+    border: 2px solid #fff;
 }
 
 .paddle {
     position: absolute;
     width: 10px;
     height: 100px;
-    background-color: #00FF00; /* Paddles brancos */
+    background-color: #fff;
 }
 
 #paddle1 {
@@ -36,35 +35,38 @@ body {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: #FFFF00; /* Bola branca */
-    border-radius: 50%; /* Bola perfeitamente redonda */
-    top: 50%;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 50%; /* Centralizar inicialmente */
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+/* Linha central */
 #center-line {
     position: absolute;
-    width: 2px;
+    width: 2px; /* Espessura da linha */
     height: 100%;
-    background-color: #7CFC00; /* Linha central mais discreta */
+    background-color: #fff;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); /* Centralizar perfeitamente */
+    opacity: 0.5; /* Para dar um leve efeito de transparência */
 }
 
+/* Estilo para os displays de pontuação */
 .score {
     position: absolute;
     top: 10px;
     font-size: 24px;
     font-weight: bold;
-    color: #7FFF00; /* Texto branco para contraste */
+    color: #fff;
     font-family: Arial, sans-serif;
 }
 
 #score1 {
-    left: 20px;
+    left: 20px; /* Posicionar próximo ao lado esquerdo */
 }
 
 #score2 {
-    right: 20px;
+    right: 20px; /* Posicionar próximo ao lado direito */
 }

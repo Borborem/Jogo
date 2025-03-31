@@ -1,0 +1,99 @@
+
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(-45deg, #ff6b6b, #feca57, #54a0ff, #1dd1a1); /* Gradiente animado */
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#game {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    border: 2px solid #fff;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo translúcido para destacar os elementos */
+}
+
+.paddle {
+    position: absolute;
+    width: 10px;
+    height: 100px;
+    background-color: #fff;
+    animation: paddleFloat 3s ease-in-out infinite; /* Animação sutil de flutuação */
+}
+
+@keyframes paddleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+#paddle1 {
+    left: 5px;
+}
+
+#paddle2 {
+    right: 5px;
+}
+
+#ball {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #feca57; /* Amarelo vibrante */
+    border-radius: 50%;
+    top: 50%; /* Centralizar inicialmente */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px #feca57; /* Sombra luminosa */
+}
+
+@keyframes scoreExplosion {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+#ball.scored {
+    animation: scoreExplosion 0.5s ease;
+}
+
+/* Linha central */
+#center-line {
+    position: absolute;
+    width: 2px; /* Espessura da linha */
+    height: 100%;
+    background-color: #fff;
+    left: 50%;
+    transform: translateX(-50%); /* Centralizar perfeitamente */
+    opacity: 0.5; /* Para dar um leve efeito de transparência */
+}
+
+/* Estilo para os displays de pontuação */
+.score {
+    position: absolute;
+    top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adiciona um sombreamento estiloso */
+}
+
+#score1 {
+    left: 20px; /* Posicionar próximo ao lado esquerdo */
+}
+
+#score2 {
+    right: 20px; /* Posicionar próximo ao lado direito */
+}
